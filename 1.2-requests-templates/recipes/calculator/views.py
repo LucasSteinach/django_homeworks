@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 DATA = {
@@ -28,3 +29,16 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+
+def rec(request, dish, servings):
+    if DATA.get(dish):
+        context = {
+          'recipe': {**DATA[dish]
+          }
+        }
+        for key, value in context['recipe'].items():
+            context['recipe'][key] = value * servings
+        return render(request, 'calculator/index.html', context)
+    else:
+        return HttpResponse(f'Не знаю такого рецепта...')

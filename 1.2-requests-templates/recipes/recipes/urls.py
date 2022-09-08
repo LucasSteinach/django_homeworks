@@ -16,6 +16,9 @@ Including another URLconf
 
 from django.urls import path
 
+from calculator.views import rec
+
 urlpatterns = [
+    path('<str:dish>/<int:servings>/', rec),
     # здесь зарегистрируйте вашу view-функцию
 ]
