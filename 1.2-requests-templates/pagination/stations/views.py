@@ -27,7 +27,7 @@ def bus_stations(request):
     paginator = Paginator(bus_list, 10)
     page = paginator.get_page(page_number)
     context = {
-              'bus_stations': bus_list,
+              'bus_stations': page,
               'page': page,
     }
     return render(request, 'stations/index.html', context)
