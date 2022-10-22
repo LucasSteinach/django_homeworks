@@ -1,0 +1,87 @@
+GET http://localhost:8000/api/v1/
+###
+
+GET http://localhost:8000/api/v1/products/
+Content-Type: application/json
+
+###
+
+GET http://localhost:8000/api/v1/stocks/
+Content-Type: application/json
+
+###
+POST http://localhost:8000/api/v1/products/
+Content-Type: application/json
+
+{
+  "title": "морковь",
+  "description": "Да"
+}
+
+###
+PATCH http://localhost:8000/api/v1/products/1/
+Content-Type: application/json
+
+{
+  "description": "Самые сочные и ароматные помидорки"
+}
+
+###
+
+DELETE http://localhost:8000/api/v1/products/1/
+Content-Type: application/json
+
+###
+
+GET http://localhost:8000/api/v1/products/?search=омид
+Content-Type: application/json
+
+###
+
+POST http://localhost:8000/api/v1/stocks/
+Content-Type: application/json
+
+{
+  "address": "У леса",
+  "positions": [
+    {
+      "product": 3,
+      "quantity": 110,
+      "price": 118.00
+    },
+    {
+      "product": 4,
+      "quantity": 89,
+      "price": 162
+    }
+  ]
+}
+
+###
+
+PATCH http://localhost:8000/api/v1/stocks/15/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 4,
+      "quantity": 20,
+      "price": 110.80
+    },
+    {
+      "product": 6,
+      "quantity": 253,
+      "price": 141
+    }
+  ]
+}
+
+###
+DELETE http://localhost:8000/api/v1/stocks/7/
+Content-Type: application/json
+
+<!--не удалось реализовать-->
+###
+GET http://localhost:8000/api/v1/stocks/?products=2
+Content-Type: application/json
