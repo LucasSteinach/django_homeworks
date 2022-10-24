@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from .models import Product, StockProduct, Stock
 
 
@@ -60,12 +59,13 @@ class StockSerializer(serializers.ModelSerializer):
         # в нашем случае: таблицу StockProduct
         # с помощью списка positions
         for position in positions:
-            values = {
-                'product': position['product'],
-                'quantity': position['quantity'],
-                'price': position['price'],
-                'stock': stock
-            }
-            StockProduct.objects.update_or_create(**values)
+            StockProduct.objects.update_or_create(
+                product=position['product'],
+                stock=stock,
+                defaults={
+                    'quantity': position['quantity'],
+                    'price': position['price']
+                }
+            )
 
         return stock
